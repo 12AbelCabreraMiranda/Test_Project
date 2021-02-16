@@ -1,0 +1,32 @@
+﻿@model PruebaTecnica.ViewModels.LoginViewModel
+@{
+    ViewBag.Title = "Index";
+}
+
+<br />
+<br />
+
+@using (Html.BeginForm("Index", "Autentication", FormMethod.Post))
+{
+    <div class="panel panel-info">
+        <div class="panel-heading">Inicio de Sesión</div>
+        <div class="panel-body">
+
+            <div class="row" style="margin-bottom:250px">
+                <div class="col-md-4 col-md-offset-4 col-xs-12">
+                    @Html.LabelFor(d => d.UserName)
+                    @Html.TextBoxFor(d => d.UserName, "", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(d => d.UserName, "", new { @class = "label label-danger" })
+                    <br />
+                    @Html.LabelFor(d => d.UserPassword)
+                    @Html.PasswordFor(d => d.UserPassword, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(d => d.UserPassword, "", new { @class = "label label-danger" })
+                    <br />
+                    <br />
+                    <button type="submit" class="btn btn-info">Entrar</button>
+                    <br />
+                </div>
+            </div>
+        </div>
+    </div>
+}

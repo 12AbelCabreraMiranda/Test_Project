@@ -1,0 +1,39 @@
+﻿@model PruebaTecnica.ViewModels.EmpleadoViewModel
+@{
+    //ViewBag.Title = "NuevoUsuario";
+    Layout = null;
+}
+
+@using (Html.BeginForm("NuevoUsuario", "Users", FormMethod.Post))
+{
+    <div class="row">
+        <div class="col-md-12">
+
+            @Html.LabelFor(d => d.NombreEmpleado)
+            @Html.TextBoxFor(d => d.NombreEmpleado, "", new { @class = "form-control" })
+            @Html.ValidationMessageFor(d => d.NombreEmpleado, "", new { @class = "label label-danger" })
+            <br />
+            @Html.LabelFor(d => d.Direccion)
+            @Html.TextBoxFor(d => d.Direccion, "", new { @class = "form-control" })
+            @Html.ValidationMessageFor(d => d.Direccion, "", new { @class = "label label-danger" })
+            <br />
+            @Html.LabelFor(d => d.TipoUsuarioId)
+            @Html.DropDownListFor(d => d.TipoUsuarioId, (SelectList)ViewBag.TipoUsuario, "[Seleccione]", new { @class = "form-control" })
+            @Html.ValidationMessageFor(d => d.TipoUsuarioId, "", new { @class = "label label-danger" })
+            <br />
+            @Html.LabelFor(d => d.NombreUsuario)
+            @Html.TextBoxFor(d => d.NombreUsuario, "", new { @class = "form-control" })
+            @Html.ValidationMessageFor(d => d.NombreUsuario, "", new { @class = "label label-danger" })
+            <br />
+            @Html.LabelFor(d => d.ContraseniaUsuario)
+            @Html.PasswordFor(d => d.ContraseniaUsuario, new { @class = "form-control" })
+            @Html.ValidationMessageFor(d => d.ContraseniaUsuario, "", new { @class = "label label-danger" })
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                <input type="submit" value="Guardar" class="btn btn-success" />
+            </div>
+
+        </div>
+    </div>
+}

@@ -1,0 +1,100 @@
+﻿
+@model List<PruebaTecnica.Models.Usuarios>
+@{
+    ViewBag.Title = "DatosUsuarios";
+}
+
+<h2>DatosUsuarios</h2>
+
+
+<br />
+<br />
+<br />
+
+<div class="row" style="text-align:right;padding:10px">
+    <button id="btnNuevo" type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">Nuevo </button>
+</div>
+@*Cuerpo del modal*@
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">
+                    Datos del  Usuario
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </h5>
+            </div>
+            <div class="modal-body">
+                <div id="modal-content">
+                    Cargando Formulario...
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@*delete*@
+
+<!--<div class="modal fade" id="DeleteConfirmation">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <a href="#" class="close" data-dismiss="modal">&times;</a>
+                <h4>Delete Record</h4>
+            </div>
+            <div class="modal-body">
+                <h4>Are You Sure? You Want To Delete This Record.</h4>
+
+            </div>
+            <div class="modal-footer">     
+                <button class="btnCancelar btn btn-primary">Cancelar</button>-->
+                @*<a href="" class="btn btn-primary" data-dismiss="modal" id="r">Cancelar</a>*@
+                <!--<button class="btnConfir btn btn-danger" >Confirmar</button>
+            </div>
+        </div>
+    </div>
+</div>-->
+
+<div class="row">
+    <div class="col-md-12">
+        <table class="table">
+            <tr>
+                <th>#</th>
+                <th>NOMBRE EMPLEADO</th>
+                <th>DIRECCIÓN EMPLEADO</th>
+                <th>NOMBRE USUARIO</th>
+                <th>CONTRASEÑA</th>
+                <th>ESTADO</th>
+                <th></th>
+                <th></th>
+                <th>CONTROLES</th>
+            </tr>
+            @foreach (var oUsuario in Model)
+            {
+                <tr>
+                    <td>@oUsuario.UsuariosId</td>
+                    <td>@oUsuario.Empleado.NombreEmpleado</td>
+                    <td>@oUsuario.Empleado.Direccion</td>
+                    <td class="text-info"><b>@oUsuario.NombreUsuario</b></td>
+                    <td class="text-danger"><b>@oUsuario.ContraseniaUsuario</b></td>
+                    <td><b>@oUsuario.Estado</b></td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                        <a href="#myModal" class="btnEditar btn btn-info" data-toggle="modal" data-id="@oUsuario.UsuariosId">Editar</a>
+                        <a href="#DeleteConfirmation" id="datoID" class="btn btn-danger btnDelete" data-toggle="modal" data-id="@oUsuario.UsuariosId">Eliminar</a>
+                    </td>
+                </tr>
+            }
+        </table>
+        <br />
+        <a href="/Autentication/Admin">Regresar</a>
+    </div>
+
+</div>
+
+    @Html.Partial( "_Delete" )
+    @section scripts{
+        <script src="~/Scripts/ModalUsers.js"></script>
+    }

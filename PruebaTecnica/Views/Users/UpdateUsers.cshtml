@@ -1,0 +1,41 @@
+﻿@model PruebaTecnica.ViewModels.UsuarioUpdateViewModel
+@{
+    //ViewBag.Title = "UpdateUsers";
+    Layout = null;
+}
+
+@using (Html.BeginForm("UpdateUsers", "Users", FormMethod.Post))
+{
+    <div class="row">
+        <div class="col-md-12">
+            @Html.HiddenFor(d => d.UsuariosId)<!-- Guarda el Id-->
+            @Html.HiddenFor(d => d.EmpleadoId)
+            <div>
+                @Html.LabelFor(d => d.NombreEmpleado)
+                @Html.TextBoxFor(d => d.NombreEmpleado, "", new { @class = "form-control" })
+                @Html.ValidationMessageFor(d => d.NombreEmpleado, null, new { @class = "label label-danger" })
+            </div>
+            <div>
+                @Html.LabelFor(d => d.Direccion)
+                @Html.TextBoxFor(d => d.Direccion, "", new { @class = "form-control" })
+                @Html.ValidationMessageFor(d => d.Direccion, null, new { @class = "label label-danger" })
+            </div>
+            <div>
+                @Html.LabelFor(d => d.NombreUsuario)<br />
+                @Html.TextBoxFor(d => d.NombreUsuario, "", new { @class = "form-control" })
+                @Html.ValidationMessageFor(d => d.NombreUsuario, null, new { @class = "label label-danger" })
+            </div>
+            <div>
+                @Html.LabelFor(d => d.ContraseniaUsuario)<br />
+                @Html.TextBoxFor(d => d.ContraseniaUsuario, "", new { @class = "form-control" })
+                @Html.ValidationMessageFor(d => d.ContraseniaUsuario, null, new { @class = "label label-danger" })
+            </div>
+            <br />
+            <div style="text-align:right">
+                <a href="#" class="btn btn-primary" data-dismiss="modal" id="r">Cancelar</a>
+                <input value="Guardar" class="btn btn-warning" type="submit" />
+            </div>
+        </div>
+    </div>
+
+}
